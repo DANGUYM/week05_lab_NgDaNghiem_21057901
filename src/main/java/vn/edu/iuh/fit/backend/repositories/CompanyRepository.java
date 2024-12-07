@@ -2,8 +2,8 @@ package vn.edu.iuh.fit.backend.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import vn.edu.iuh.fit.backend.models.Address;
+import vn.edu.iuh.fit.backend.models.Company;
 
 @Repository
-public interface AddressRepository extends JpaRepository<Address, Long> {
+public interface CompanyRepository extends JpaRepository<Company, Long> {
 }
