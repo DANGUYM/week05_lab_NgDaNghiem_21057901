@@ -1,5 +1,6 @@
 package vn.edu.iuh.fit.backend.models;
 
+import com.neovisionaries.i18n.CountryCode;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,8 +22,8 @@ public class Address {
     @Column(name = "city", length = 50)
     private String city;
 
-    @Column(name = "country", length = 50)
-    private String country;
+    @Column(name = "country", length = 30)
+    private CountryCode country;
 
     @Column(name = "number", length = 20)
     private String number;
@@ -30,7 +31,7 @@ public class Address {
     @Column(name = "zipcode", length = 7)
     private String zipcode;
 
-    public Address(String number, String street, String city, String zipcode, String countryCode) {
+    public Address(String number, String street, String city, String zipcode, CountryCode countryCode) {
         this.number = number;
         this.street = street;
         this.city = city;

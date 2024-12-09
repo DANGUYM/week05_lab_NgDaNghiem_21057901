@@ -31,7 +31,7 @@ public class Week05LabNgDaNghiem21057901Application {
             Random rnd =new Random();
             for (int i = 1; i < 1000; i++) {
                 Address add = new Address(rnd.nextInt(1,1000)+"","Quang Trung","HCM",
-                        rnd.nextInt(70000,80000)+"", CountryCode.VN.getName() );
+                        rnd.nextInt(70000,80000)+"", CountryCode.VN);
                 addressRepository.save(add);
                 Candidate can=new Candidate("Name #"+i,
                         LocalDate.of(1998,rnd.nextInt(1,13),rnd.nextInt(1,29)),
