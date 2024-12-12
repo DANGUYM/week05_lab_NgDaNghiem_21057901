@@ -23,7 +23,7 @@ public class Address {
     private String city;
 
     @Column(name = "country", length = 30)
-    private CountryCode country;
+    private CountryCode country = CountryCode.VN;
 
     @Column(name = "number", length = 20)
     private String number;

@@ -20,4 +20,16 @@ public class CandidateServices {
         Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
         return candidateRepository.findAll(pageable);//findFirst.../findTop...
     }
+
+    public void deleteById(Long id) {
+        candidateRepository.deleteById(id);
+    }
+
+    public Candidate save(Candidate candidate) {
+        return candidateRepository.save(candidate);
+    }
+
+    public Candidate findById(Long id) {
+        return candidateRepository.findById(id).get();
+    }
 }
