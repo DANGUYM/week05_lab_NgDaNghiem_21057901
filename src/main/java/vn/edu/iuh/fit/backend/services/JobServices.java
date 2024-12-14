@@ -1,33 +1,26 @@
+// JobService.java
 package vn.edu.iuh.fit.backend.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import vn.edu.iuh.fit.backend.models.Company;
-import vn.edu.iuh.fit.backend.repositories.CompanyRepository;
+import vn.edu.iuh.fit.backend.models.Job;
+import vn.edu.iuh.fit.backend.models.JobSkill;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
-public class JobServices {
+public interface JobServices {
+    List<Job> getAllJobs();
+    Optional<Job> getJobById(Long id);
+    Job createJob(Job job);
+    Job updateJob(Job job);
+    void deleteJob(Long id);
 
-    @Autowired
-    private CompanyRepository companyRepository;
+    void addSkillsToJob(Long jobId, List<Long> skillIds, List<Byte> skillLevels);
 
-    public List<Company> findAll() {
-        return companyRepository.findAll();
-    }
+    List<Job> findByCompany_Id(Long companyId);
 
-    public Optional<Company> findById(Long id) {
-        return companyRepository.findById(id);
-    }
+    void addJobSkill(JobSkill jobSkill);
 
-    public Company save(Company company) {
-        return companyRepository.save(company);
-    }
+    List<JobSkill> getJobSkillsByJobId(Long jobId);
 
-    public void deleteById(Long id) {
-        companyRepository.deleteById(id);
-    }
-
+    List<Job> findJobsByCandidateSkills(Long candidateId);
 }
