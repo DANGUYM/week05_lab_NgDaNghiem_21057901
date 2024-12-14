@@ -2,12 +2,82 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Nguyễn Đa Nghiêm - LAB WEEK 05</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e0f7fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .header {
+            background-color: #00695c;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .nav-bar {
+            background-color: #004d40;
+            padding: 10px;
+        }
+        .nav-bar a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .main-content {
+            display: flex;
+            justify-content: space-around;
+            padding: 50px;
+        }
+        .card-custom {
+            width: 30%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+        .footer-custom {
+            background-color: #00695c;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
 </head>
 <body>
-<!--candidates.html-->
-
-<a href="/candidates">Candidates</a>
-
+    <div class="header">
+        <h1>Nguyễn Đa Nghiêm - LAB WEEK 05</h1>
+    </div>
+    <div class="nav-bar">
+        <a href="/candidates/list-paged">Candidate List</a>
+        <a href="/candidates/login">Candidate Login</a>
+        <a href="/companies/login">Company Login</a>
+    </div>
+    <div class="main-content">
+        <div class="card card-custom">
+            <h2>Candidate List - Paginated</h2>
+            <p>View the list of candidates with pagination.</p>
+            <a href="/candidates/list-paged" class="btn btn-primary">Go</a>
+        </div>
+        <div class="card card-custom">
+            <h2>Candidate Login - Skill & Job Suggestions</h2>
+            <p>Login to view skill and job suggestions.</p>
+            <a href="/candidates/login" class="btn btn-warning">Go</a>
+        </div>
+        <div class="card card-custom">
+            <h2>Company Login - Candidate Suggestions</h2>
+            <p>Login to view candidate suggestions.</p>
+            <a href="/companies/login" class="btn btn-danger">Go</a>
+        </div>
+    </div>
+    <div class="footer-custom">
+        <p>&copy; 2023 Nguyễn Đa Nghiêm</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -1,35 +1,26 @@
 package vn.edu.iuh.fit.backend.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Service;
 import vn.edu.iuh.fit.backend.models.Candidate;
-import vn.edu.iuh.fit.backend.repositories.CandidateRepository;
+import vn.edu.iuh.fit.backend.models.CandidateSkill;
 
-@Service
-public class CandidateServices {
-    @Autowired
-    private CandidateRepository candidateRepository;
+import java.util.List;
+import java.util.Optional;
 
-    public Page<Candidate> findAll(int pageNo, int pageSize, String sortBy,
-                                   String sortDirection) {
-        Sort sort = Sort.by(Sort.Direction.fromString(sortDirection), sortBy);
-        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
-        return candidateRepository.findAll(pageable);//findFirst.../findTop...
-    }
+public interface CandidateServices {
+    List<Candidate> getAllCandidates();
+    Optional<Candidate> getCandidateById(Long id);
+    Candidate createCandidate(Candidate candidate);
+    Candidate updateCandidate(Long id, Candidate candidateDetails);
+    void deleteCandidate(Long id);
 
-    public void deleteById(Long id) {
-        candidateRepository.deleteById(id);
-    }
+    Page<Candidate> getAllCandidates(Pageable pageable);
 
-    public Candidate save(Candidate candidate) {
-        return candidateRepository.save(candidate);
-    }
+    Optional<Candidate> findByEmail(String email);
 
-    public Candidate findById(Long id) {
-        return candidateRepository.findById(id).get();
-    }
+    List<CandidateSkill> getSkillsByCandidateId(Long canId);
+
+    List<Candidate> getSuitableCandidatesForJob(Long jobId);
 }
+

@@ -1,19 +1,19 @@
 package vn.edu.iuh.fit.backend.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "company")
-@AllArgsConstructor
-@NoArgsConstructor
 public class Company {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "comp_id", nullable = false)
     private Long id;
 
@@ -35,5 +35,8 @@ public class Company {
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "address", nullable = false)
     private Address address;
+
+    @OneToMany(mappedBy = "company")
+    private Set<Job> jobs = new LinkedHashSet<>();
 
 }
