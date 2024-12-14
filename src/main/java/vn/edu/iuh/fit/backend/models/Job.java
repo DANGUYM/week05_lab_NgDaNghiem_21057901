@@ -17,6 +17,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class Job {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "job_id", nullable = false)
     private Long id;
 

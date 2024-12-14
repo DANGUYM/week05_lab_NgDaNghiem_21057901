@@ -1,13 +1,13 @@
 package vn.edu.iuh.fit.backend.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -17,6 +17,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Skill {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "skill_id", nullable = false)
     private Long id;
 
@@ -28,5 +29,17 @@ public class Skill {
 
     @Column(name = "type")
     private Byte type;
+
+    @OneToMany(mappedBy = "skill")
+    private Set<CandidateSkill> candidateSkills = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "skill")
+    private Set<JobSkill> jobSkills = new LinkedHashSet<>();
+
+    public Skill(String skillName, String skillDescription, Byte type) {
+        this.skillName = skillName;
+        this.skillDescription = skillDescription;
+        this.type = type;
+    }
 
 }
