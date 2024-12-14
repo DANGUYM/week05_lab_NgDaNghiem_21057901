@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Company Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        body {
+            background-color: #f0f4f8;
+            font-family: 'Arial', sans-serif;
+        }
+        .navbar-custom {
+            background-color: #007bff;
+        }
+        .navbar-custom .navbar-brand, .navbar-custom .nav-link {
+            color: white;
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .main-content {
+            display: flex;
+            justify-content: center;
+            padding: 50px;
+        }
+        .form-container {
+            width: 50%;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .footer-custom {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Companies</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/companies/list-paged">Paged List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/companies/login">Company Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/candidates/login">Candidate Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="header">
+    <h1>Edit Company Profile</h1>
+</div>
+
+<div class="main-content">
+    <div class="form-container">
+        <div th:if="${errorMessage}" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <span th:text="${errorMessage}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <form th:action="@{/companies/edit}" th:object="${companyForm}" method="post">
+            <div class="mb-3">
+                <label for="compName" class="form-label">Company Name:</label>
+                <input type="text" class="form-control" id="compName" th:field="*{compName}" placeholder="Enter company name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Enter email" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone:</label>
+                <input type="text" class="form-control" id="phone" th:field="*{phone}" placeholder="Enter phone number" required>
+            </div>
+            <div class="mb-3">
+                <label for="webUrl" class="form-label">Website:</label>
+                <input type="url" class="form-control" id="webUrl" th:field="*{webUrl}" placeholder="Enter website URL">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Address:</label>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <input type="text" class="form-control" th:field="*{address.street}" placeholder="Street" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <input type="text" class="form-control" th:field="*{address.city}" placeholder="City" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <input type="text" class="form-control" th:field="*{address.zipcode}" placeholder="Zip Code" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <input type="text" class="form-control" th:field="*{address.number}" placeholder="House Number" required>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="about" class="form-label">About the Company:</label>
+                <textarea class="form-control" id="about" th:field="*{about}" rows="3" placeholder="Enter company description"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Save Changes</button>
+            <a th:href="@{/companies/profile}" class="btn btn-secondary w-100 mt-2">Back to Profile</a>
+        </form>
+    </div>
+</div>
+
+<div class="footer-custom">
+    <p>&copy; 2023 Your Company</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
